@@ -42,7 +42,7 @@ $f3->route('GET|POST /survey', function($f3) {
         if(validForm()){
             //Write data to Session
             $_SESSION['name'] = $name;
-            $_SESSION['midterm'] = "";
+            //$_SESSION['midterm'] = "";
 
             if(!empty($_POST['midterm']))
             {

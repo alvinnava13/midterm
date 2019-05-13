@@ -25,16 +25,16 @@ function validName($name)
 function validSelection($midterm)
 {
     global $f3;
-    //Condiments are optional
+
     if (empty($midterm)) {
         return true;
     }
-    //But if there are condiments, we need to make sure they're valid
+
     foreach ($midterm as $select) {
         if (!in_array($select, $f3->get('midterm'))) {
             return false;
         }
     }
-    //If we're still here, then we have valid condiments
+
     return true;
 }
