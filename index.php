@@ -13,6 +13,9 @@ $f3 = Base::instance();
 // Turn on Fat-Free error reporting
 $f3->set('DEBUG', 3);
 
+//Define array
+$f3->set('midterm', array('This midterm is easy', 'I like midterms', 'Today is Monday'));
+
 // Define a default route
 $f3->route('GET /', function () {
 

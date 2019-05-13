@@ -6,9 +6,22 @@
 </head>
 <body>
 <h1>Midterm Survey</h1>
-<label>Name
-    <input type="text" name="name" value="{{ @name }}">
-</label>
+<form method="post" action="#">
+    <label>Name
+        <input type="text" name="name" value="{{ @name }}">
+    </label>
+
+    <p>Check all that apply:<br>
+        <br>
+        <repeat group="{{ @midterm }}" value="{{ @midtermOption }}">
+            <label><input type="checkbox" name="midterm[]" value="{{ @midtermOption }}"
+                <check if="{{ !empty(@midterm) && in_array(@midtermOption, @midterm) }}">
+
+                </check>
+                >{{ @midtermOption }}</label><br>
+        </repeat>
+    </p>
+</form>
 
 </body>
 </html>
