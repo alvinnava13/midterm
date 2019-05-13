@@ -24,7 +24,9 @@ $f3->route('GET /', function () {
 
 // Define a survey route
 $f3->route('GET|POST /survey', function($f3) {
-
+    //Display survey form
+    $view = new Template();
+    echo $view->render('views/survey-form.html');
 });
 
 // Run Fat-free
