@@ -27,9 +27,32 @@ $f3->route('GET /', function () {
 
 // Define a survey route
 $f3->route('GET|POST /survey', function($f3) {
+
+    if(!empty($_POST)){
+        // Get data from form
+        $name = $_POST['name'];
+        $midterm = $_POST['midterm'];
+
+        // Add to hive
+        $f3->set('name', $name);
+        $f3->set('midterm', $midterm);
+
+        //Redirect to Summary
+        $f3->reroute('/summary');
+    }
     //Display survey form
     $view = new Template();
     echo $view->render('views/survey-form.html');
+});
+
+
+
+//Define a summary route
+$f3->route('GET /summary', function() {
+
+    //Display summary
+    $view = new Template();
+    echo $view->render('views/summary.html');
 });
 
 // Run Fat-free
