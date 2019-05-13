@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 
 // Require autoload file
 require_once('vendor/autoload.php');
+require_once('model/validate.php');
 
 // Create an instance of the Base class
 $f3 = Base::instance();
@@ -37,8 +38,21 @@ $f3->route('GET|POST /survey', function($f3) {
         $f3->set('name', $name);
         $f3->set('midterm', $midterm);
 
-        //Redirect to Summary
-        $f3->reroute('/summary');
+        // If data is valid...
+        if(validForm()){
+            //Write data to Session
+            $_SESSION['name'] = $name;
+            $_SESSION['midterm'] = "";
+
+            if(!empty($_POST['midterm']))
+            {
+                $_SESSION['midterm'] = implode(", ", $_POST['midterm']);
+            }
+
+            //Redirect to Summary
+            $f3->reroute('/summary');
+        }
+
     }
     //Display survey form
     $view = new Template();
