@@ -17,7 +17,14 @@ $f3->set('DEBUG', 3);
 $f3->route('GET /', function () {
 
     echo "<h1>Midterm Survey</h1>";
-    echo "<a href='link'>Take my Midterm Survey</a>";
+    echo "<a href='survey'>Take my Midterm Survey</a>";
+});
+
+
+
+// Define a survey route
+$f3->route('GET|POST /survey', function($f3) {
+
 });
 
 // Run Fat-free
