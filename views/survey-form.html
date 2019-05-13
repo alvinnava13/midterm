@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Midterm Survey Form</title>
+
+    <style>
+        .err {
+            color: darkred;
+        }
+    </style>
 </head>
 <body>
 <h1>Midterm Survey</h1>
@@ -10,9 +16,15 @@
     <label>Name
         <input type="text" name="name" value="{{ @name }}">
     </label>
+    <check if="{{ @errors['name'] }}">
+        <span class="err">{{ @errors['name'] }}</span>
+    </check>
 
     <p>Check all that apply:<br>
         <br>
+        <check if="{{ @errors['midterm'] }}">
+            <span class="err">{{ @errors['midterm'] }}</span>
+        </check><br>
         <repeat group="{{ @midterm }}" value="{{ @midtermOption }}">
             <label><input type="checkbox" name="midterm[]" value="{{ @midtermOption }}"
                 <check if="{{ !empty(@midterm) && in_array(@midtermOption, @midterm) }}">
